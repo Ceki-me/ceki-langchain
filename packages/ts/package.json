@@ -1,7 +1,7 @@
 {
   "name": "@langchain/ceki",
   "version": "0.1.0",
-  "description": "LangChain tool for Ceki — real Chrome sessions for AI agents",
+  "description": "LangChain toolkit for Ceki — structural tools that drive real Chrome sessions via @ceki/sdk",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -18,7 +18,7 @@
     "prepublishOnly": "npm run build && npm run test"
   },
   "files": ["dist", "README.md", "LICENSE"],
-  "keywords": ["langchain", "tool", "browser", "ai-agent", "automation", "ceki", "chrome"],
+  "keywords": ["langchain", "tool", "toolkit", "browser", "ai-agent", "automation", "ceki", "chrome"],
   "author": "iWedmak",
   "license": "MIT",
   "repository": {
@@ -30,6 +30,10 @@
   "bugs": "https://github.com/Ceki-me/ceki-langchain/issues",
   "engines": {
     "node": ">=18"
+  },
+  "dependencies": {
+    "@ceki/sdk": "^1.13.0",
+    "zod": "^3.23.0"
   },
   "peerDependencies": {
     "@langchain/core": "^0.3.0"

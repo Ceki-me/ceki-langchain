@@ -9,7 +9,7 @@ This monorepo ships two packages:
 | [`@langchain/ceki`](./packages/ts) | TypeScript / JS | `packages/ts` | v0.1.0 (pre-publish) |
 | [`langchain-ceki`](./packages/python) | Python | `packages/python` | v0.1.0 (pre-publish) |
 
-Both wrap the [ceki-sdk](https://pypi.org/project/ceki-sdk/) and the Ceki marketplace API. They give your agent a `ceki_browser` tool that takes a natural-language task and returns the result.
+Both packages are a thin wrapper over [ceki-sdk](https://pypi.org/project/ceki-sdk/) / [`@ceki/sdk`](https://www.npmjs.com/package/@ceki/sdk). They expose Ceki as a **toolkit** of structural LangChain tools — `ceki_rent_browser`, `ceki_navigate`, `ceki_click`, `ceki_type`, `ceki_scroll`, `ceki_screenshot`, `ceki_snapshot`, `ceki_chat_send`, `ceki_stop` — and let the agent's own LLM plan the sequence. No server-side natural-language endpoint, no LLM inside the wrapper.
 
 ## Install
 
@@ -24,30 +24,34 @@ pip install langchain-ceki
 ## Use
 
 ```python
-from langchain_ceki import CekiBrowserTool
+from langchain_ceki import CekiToolkit
 
-tool = CekiBrowserTool()  # reads CEKI_API_KEY env var
-result = tool.invoke({"task": "Navigate to https://my-app.example.com and return the page title."})
+toolkit = CekiToolkit(default_rent={"schedule_id": 4242})
+tools = toolkit.get_tools()
+# pass `tools` to any LangChain agent (create_tool_calling_agent, ...).
+# When the run finishes:
+await toolkit.aclose()
 ```
 
 ```ts
-import { CekiBrowserTool } from "@langchain/ceki";
+import { CekiToolkit } from "@langchain/ceki";
 
-const tool = new CekiBrowserTool();
-const result = await tool.invoke("Navigate to https://my-app.example.com and return the page title.");
+const toolkit = new CekiToolkit({ defaultRent: { scheduleId: 4242 } });
+const tools = await toolkit.getTools();
+// pass `tools` to any LangChain agent.
+await toolkit.close();
 ```
 
 Get an API key at [ceki.me](https://ceki.me).
 
 ## Use responsibly
 
-Use only on sites you own or have authorization to operate on — your own apps, your own dashboards, public data within site Terms of Service, accessibility audits you're responsible for. See the upstream [SKILL.md](https://github.com/Ceki-me/realbrowser-skill/blob/main/SKILL.md) for appropriate and inappropriate use cases.
+Use only on sites you own or have authorization to operate on — your own apps, your own dashboards, public data within site Terms of Service, accessibility audits you're responsible for.
 
 ## Related
 
 - [Ceki marketplace](https://ceki.me)
-- [RealBrowser ClawHub skill](https://clawhub.ai/skills/realbrowser) (for OpenClaw users)
-- [ceki-sdk on PyPI](https://pypi.org/project/ceki-sdk/) (low-level CLI + Python SDK)
+- [`ceki-sdk` on PyPI](https://pypi.org/project/ceki-sdk/) and [`@ceki/sdk` on npm](https://www.npmjs.com/package/@ceki/sdk) — low-level CLI + SDK
 
 ## License
 
