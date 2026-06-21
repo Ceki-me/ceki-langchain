@@ -6,7 +6,7 @@
 import { ChatOpenAI } from "@langchain/openai";
 import { AgentExecutor, createToolCallingAgent } from "langchain/agents";
 import { ChatPromptTemplate } from "@langchain/core/prompts";
-import { CekiToolkit } from "langchain-ceki";
+import { CekiToolkit } from "@ceki/langchain-ceki";
 
 async function main() {
   const toolkit = new CekiToolkit({

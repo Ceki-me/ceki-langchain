@@ -1,0 +1,41 @@
+name: Publish to npm
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish-primary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+
+      - run: npm ci
+        working-directory: packages/ts
+      - run: npm run build
+        working-directory: packages/ts
+      - run: npm publish --access public
+        working-directory: packages/ts
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+  publish-squat:
+    runs-on: ubuntu-latest
+    needs: publish-primary
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          registry-url: "https://registry.npmjs.org"
+
+      - run: npm publish --access public
+        working-directory: packages/ts-squat
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

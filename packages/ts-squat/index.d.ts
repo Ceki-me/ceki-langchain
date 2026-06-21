@@ -1,2 +1,2 @@
-export * from "langchain-ceki";
-export { default } from "langchain-ceki";
+export * from "@ceki/langchain-ceki";
+export { default } from "@ceki/langchain-ceki";

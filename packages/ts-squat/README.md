@@ -1,10 +1,10 @@
 # @ceki/langchain
 
-This is a namespace-reservation alias. The real package is
-[`langchain-ceki`](https://www.npmjs.com/package/langchain-ceki).
+Namespace alias. The real package is
+[`@ceki/langchain-ceki`](https://www.npmjs.com/package/@ceki/langchain-ceki).
 
 ```bash
-npm install langchain-ceki @langchain/core
+npm install @ceki/langchain-ceki @langchain/core
 ```
 
 See the [main README](https://github.com/Ceki-me/langchain) for usage.

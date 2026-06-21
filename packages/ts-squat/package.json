@@ -1,7 +1,7 @@
 {
   "name": "@ceki/langchain",
   "version": "0.1.0",
-  "description": "Reserved namespace for langchain-ceki — install `langchain-ceki` for the real package.",
+  "description": "Reserved namespace alias for `@ceki/langchain-ceki` — install that for the real package.",
   "type": "module",
   "main": "./index.js",
   "types": "./index.d.ts",
@@ -26,6 +26,6 @@
     "node": ">=18"
   },
   "dependencies": {
-    "langchain-ceki": "^0.1.0"
+    "@ceki/langchain-ceki": "^0.1.0"
   }
 }

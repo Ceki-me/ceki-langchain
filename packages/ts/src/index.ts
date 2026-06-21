@@ -1,5 +1,5 @@
 /**
- * langchain-ceki — LangChain toolkit for Ceki.
+ * @ceki/langchain-ceki — LangChain toolkit for Ceki.
  *
  * Drive a real Chrome session from your LangChain agent — your own (via the
  * Ceki extension), or rented from the Ceki marketplace.
@@ -54,7 +54,7 @@ function resolveApiKey(opts: CekiToolkitOptions): string {
  *
  * @example
  * ```ts
- * import { CekiToolkit } from "langchain-ceki";
+ * import { CekiToolkit } from "@ceki/langchain-ceki";
  *
  * const toolkit = new CekiToolkit();
  * const tools = await toolkit.getTools();

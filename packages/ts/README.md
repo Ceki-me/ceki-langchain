@@ -1,17 +1,17 @@
-# langchain-ceki
+# @ceki/langchain-ceki
 
 LangChain toolkit for [Ceki](https://ceki.me) — drive a real Chrome session from your LangChain agent. Structural tools that wrap [`@ceki/sdk`](https://www.npmjs.com/package/@ceki/sdk).
 
 ## Install
 
 ```bash
-npm install langchain-ceki @langchain/core
+npm install @ceki/langchain-ceki @langchain/core
 ```
 
 ## Use
 
 ```ts
-import { CekiToolkit } from "langchain-ceki";
+import { CekiToolkit } from "@ceki/langchain-ceki";
 import { createToolCallingAgent, AgentExecutor } from "langchain/agents";
 
 const toolkit = new CekiToolkit({

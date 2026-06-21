@@ -1,5 +1,5 @@
 {
-  "name": "langchain-ceki",
+  "name": "@ceki/langchain-ceki",
   "version": "0.1.0",
   "description": "LangChain toolkit for Ceki — structural tools that drive real Chrome sessions via @ceki/sdk",
   "type": "module",
